@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overall Performance Dashboard - NPS eLearning</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Dashboard.css".css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div> 
+
+    <!-- Dashboard Section -->
+    <div class="container mt-5">
+        <!-- User Profile Overview -->
+        <div class="user-profile">
+            <div class="row">
+                <div class="col-lg-4 text-center text-lg-start">
+                    <img src="" alt="User Avatar" class="rounded-circle mb-3">
+                </div>
+                <div class="col-lg-8">
+                    <h1 class="mb-2">Welcome, Aditya bhardwaz!</h1>
+                    <p class="fs-4 mb-2">Level <span id="userLevel">3</span> | <span id="userXP">1800</span> XP</p>
+                    <div class="progress" style="height: 15px;">
+                        <div id="levelProgress" class="progress-bar" role="progressbar" style="width: 80%; --progress-width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80% to Level 4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quote of the Day -->
+        <div class="quote-container">
+            <h2 class="mb-4">Quote of the Day</h2>
+            <div class="quote-text" id="quoteText">Loading your daily inspiration...</div>
+            <div class="quote-author" id="quoteAuthor"></div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="stat-card shadow-lg">
+                    <h5>Total XP Earned</h5>
+                    <p class="pulse"><span id="totalXP">1800</span> XP</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="stat-card shadow-lg">
+                    <h5>Challenges Completed</h5>
+                    <p class="pulse"><span id="challengesCompleted">12</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="course-progress-container">
+            <h2>Your Achievements</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="achievement-card shadow-lg">
+                        <i class="bi bi-trophy-fill animate-glow"></i>
+                        <h6>Challenge Master</h6>
+                        <p>Completed 10 Challenges</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="achievement-card shadow-lg">
+                        <i class="bi bi-star-fill animate-glow"></i>
+                        <h6>XP Pro</h6>
+                        <p>Earned 1500 XP</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="achievement-card shadow-lg">
+                        <i class="bi bi-award-fill animate-glow"></i>
+                        <h6>Top Learner</h6>
+                        <p>Ranked in Top 5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Completion Progress -->
+        <div class="course-progress-container">
+            <h2>Course Completion Progress</h2>
+            <div class="mb-4">
+                <div class="progress-label">
+                    <span>Math Progress</span>
+                    <span>50%</span>
+                </div>
+                <div class="progress" style="height: 15px;">
+                    <div id="mathProgress" class="progress-bar bg-success animate-progress" style="width: 50%; --progress-width: 50%;" data-progress="50"></div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="progress-label">
+                    <span>Science Progress</span>
+                    <span>70%</span>
+                </div>
+                <div class="progress" style="height: 15px;">
+                    <div id="scienceProgress" class="progress-bar bg-info animate-progress" style="width: 70%; --progress-width: 70%;" data-progress="70"></div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="progress-label">
+                    <span>English Progress</span>
+                    <span>60%</span>
+                </div>
+                <div class="progress" style="height: 15px;">
+                    <div id="englishProgress" class="progress-bar bg-warning animate-progress" style="width: 60%; --progress-width: 60%;" data-progress="60"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="activity-container">
+            <h2>Recent Activity</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Completed Lesson 3 in Math for Beginners</li>
+                <li class="list-group-item">Earned 50 XP from Science Quiz</li>
+                <li class="list-group-item">Achieved "Challenge Master" Badge</li>
+            </ul>
+        </div>
+
+        <!-- Challenges -->
+        <div class="course-progress-container">
+            <h2>Active Challenges</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="challenge-card h-100">
+                        <h5>Daily Challenge</h5>
+                        <p>Complete 3 Lessons Today</p>
+                        <p>Reward: 50 XP | Ends in 5 hours</p>
+                        <button class="btn btn-primary">Start Now</button>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="challenge-card h-100">
+                        <h5>Weekly Challenge</h5>
+                        <p>Earn 200 XP This Week</p>
+                        <p>Reward: 100 XP | Ends in 4 days</p>
+                        <button class="btn btn-primary">Start Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="leaderboard-container">
+            <h2>Leaderboard</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>XP Points</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Priyansh Bhandari</td>
+                            <td>2500 XP</td>
+                        </tr>
+                        <tr class="table-active">
+                            <td>2</td>
+                            <td>Anoop Singh</td>
+                            <td>2300 XP</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Sumit Singh</td>
+                            <td>2100 XP</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Princh Sharma</td>
+                            <td>1900 XP</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Yash Vardhan</td>
+                            <td>1800 XP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="Courses.html">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="Home.html">1</a></li>
+            <li class="page-item"><a class="page-link" href="Courses.html">2</a></li>
+            <li class="page-item active"><a class="page-link" href="Dashboard.html">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+
+    <!-- Footer -->
+    <div class="footer-wrapper">
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Fetch Quote of the Day
+        fetch('https://api.quotable.io/random?tags=education,success,wisdom')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('quoteText').textContent = `"${data.content}"`;
+                document.getElementById('quoteAuthor').textContent = `— ${data.author}`;
+            })
+            .catch(error => {
+                document.getElementById('quoteText').textContent = "Education is the passport to the future, for tomorrow belongs to those who prepare for it today.";
+                document.getElementById('quoteAuthor').textContent = "— Malcolm X";
+            });
+            
+        // Initialize progress animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                bar.classList.add('animate-progress');
+            });
+        });
+    </script>
+    <script src="index1.js"></script>
+</body>
+</html>

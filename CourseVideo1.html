@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Player - NPS eLearning</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <!-- <style>
+    body {
+      background: #eef3f9;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      background: #000;
+      border-radius: 10px;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .quiz-card {
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .quiz-card:hover {
+      transform: translateY(-3px);
+    }
+    .card-body h5 i {
+      color: #0d6efd;
+      margin-right: 8px;
+    }
+    .badge {
+      font-size: 0.9rem;
+    }
+    .navbar {
+      border-bottom: 1px solid #dee2e6;
+    }
+  </style> -->
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-semibold text-primary" href="courses.html">
+        <i class="bi bi-arrow-left"></i> Back to Courses
+      </a>
+      <span class="me-3">XP: <strong id="xpCount">0</strong></span>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container my-5">
+    <div class="row g-4">
+      <!-- Video Section -->
+      <div class="col-lg-8">
+        <div class="video-container">
+          <iframe id="youtubeVideo" src="https://www.youtube.com/embed/bdJ_2xlYNls?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Course Title & Description -->
+        <div class="mt-4">
+          <h2 class="text-primary fw-bold">Introduction to Algebra</h2>
+          <div class="d-flex gap-2 my-3">
+            <span class="badge bg-primary">Beginner Level</span>
+            <span class="text-muted"><i class="bi bi-clock"></i> 2h 15m</span>
+            <span class="text-muted"><i class="bi bi-person-circle"></i> Faculty: Dr. Ramesh Verma</span>
+          </div>
+          <p class="text-muted">Master fundamental algebraic concepts including equations, inequalities, and polynomial operations through interactive lessons and practical examples.</p>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+        <div class="card shadow-sm h-100 border-0">
+          <div class="card-body">
+            <!-- Real-time Progress -->
+            <div class="mb-4">
+              <h5 class="fw-semibold"><i class="bi bi-graph-up"></i> Watching Video</h5>
+              <div class="progress" style="height: 8px;">
+                <div class="progress-bar bg-success" id="videoProgressBar" role="progressbar" style="width: 0%"></div>
+              </div>
+              <small class="text-muted"><span id="progressText">0%</span> Completed</small>
+            </div>
+
+            <!-- Course Info Again -->
+            <div class="mb-4">
+              <h5 class="fw-semibold"><i class="bi bi-info-circle"></i> Course Info</h5>
+              <p class="mb-1"><strong>Title:</strong> Introduction to Algebra</p>
+              <p class="mb-1"><strong>Duration:</strong> 2h 15m</p>
+              <p class="mb-1"><strong>Faculty:</strong> Dr. Ramesh Verma</p>
+            </div>
+
+            <!-- Video Completion Quiz -->
+            <div>
+              <h5 class="fw-semibold"><i class="bi bi-patch-question"></i> Video Completion Quiz</h5>
+              <div class="card quiz-card" id="quizCard" data-bs-toggle="modal" data-bs-target="#quizModal" style="pointer-events: none; opacity: 0.6;">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <div class="bg-primary text-white rounded p-2 me-3">
+                      <i class="bi bi-trophy" style="font-size: 1.5rem;"></i>
+                    </div>
+                    <div>
+                      <h6 class="mb-0">Earn 50 XP</h6>
+                      <small class="text-muted">Complete after 80% video</small>
+                    </div>
+                  </div>
+                <!-- </div> -->
+              </div>
+            </div>
+
+            <!-- Toast Notification -->
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+              <div id="quizToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                  <div class="toast-body">🎉 Quiz Unlocked! You can now attempt the quiz.</div>
+                  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz Modal -->
+  <div class="modal fade" id="quizModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-patch-question"></i> Quiz</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="quizContent">
+            <h6>What is 2x + 3 = 7?</h6>
+            <div class="list-group">
+              <button class="list-group-item list-group-item-action" onclick="checkAnswer(1, 0)">2</button>
+              <button class="list-group-item list-group-item-action" onclick="checkAnswer(1, 1)">3</button>
+              <button class="list-group-item list-group-item-action" onclick="checkAnswer(1, 2)">4</button>
+              <button class="list-group-item list-group-item-action" onclick="checkAnswer(1, 3)">5</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtubeVideo', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      setInterval(updateProgress, 1000);
+    }
+
+    function onPlayerStateChange(event) {}
+
+    function updateProgress() {
+      if (player && player.getDuration) {
+        const duration = player.getDuration();
+        const current = player.getCurrentTime();
+        const progress = (current / duration) * 100;
+        document.getElementById("videoProgressBar").style.width = `${progress}%`;
+        document.getElementById("progressText").textContent = `${Math.floor(progress)}%`;
+
+        const quizCard = document.getElementById("quizCard");
+        if (progress >= 80 && quizCard.style.pointerEvents === "none") {
+          quizCard.style.pointerEvents = "auto";
+          quizCard.style.opacity = "1";
+          const quizToast = new bootstrap.Toast(document.getElementById("quizToast"));
+          quizToast.show();
+        }
+      }
+    }
+
+    function checkAnswer(questionIndex, selectedIndex) {
+      const correct = 1;
+      const xp = 50;
+
+      if (selectedIndex === correct) {
+        alert(`Correct! Earned ${xp} XP`);
+        updateXP(xp);
+        bootstrap.Modal.getInstance(document.getElementById("quizModal")).hide();
+      } else {
+        alert("Try Again!");
+      }
+    }
+
+    function updateXP(points) {
+      let currentXP = parseInt(localStorage.getItem("xp")) || 0;
+      currentXP += points;
+      localStorage.setItem("xp", currentXP);
+      document.getElementById("xpCount").textContent = currentXP;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("xpCount").textContent = localStorage.getItem("xp") || 0;
+    });
+  </script>
+</body>
+</html>

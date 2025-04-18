@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard Chart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .leaderboard-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            padding-top: 60px;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 2px;
+        }
+
+        .leaderboard-table {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table > :not(caption) > * > * {
+            padding: 1rem 1.5rem;
+        }
+
+        .table thead th {
+            background: linear-gradient(90deg, #2c3e50, #3498db);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+        }
+
+        .table tbody tr:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+
+        .best-performer {
+            background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px rgba(67, 206, 162, 0.5);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(67, 206, 162, 0.8);
+            }
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        #chartContainer {
+            width: 100%;
+            height: 400px;
+            padding: 1rem;
+        }
+
+        .rank-number {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #2c3e50;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .rank-1 { background-color: #ffd700; color: #000; }
+        .rank-2 { background-color: #c0c0c0; color: #000; }
+        .rank-3 { background-color: #cd7f32; color: #fff; }
+
+        .xp-points {
+            font-weight: 600;
+            color: #2ecc71;
+        }
+        
+        /* New styles for additional features */
+        .progress-timeline {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .category-performance {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .achievement-badge {
+            width: 60px;
+            height: 60px;
+            margin: 0 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .badge-gold {
+            background: linear-gradient(135deg, #f9db5a 0%, #e2a135 100%);
+            color: #5d4215;
+        }
+        
+        .badge-silver {
+            background: linear-gradient(135deg, #e3e3e3 0%, #b8b8b8 100%);
+            color: #494949;
+        }
+        
+        .badge-bronze {
+            background: linear-gradient(135deg, #e0a684 0%, #c27e56 100%);
+            color: #5d3215;
+        }
+        
+        .badge-title {
+            position: absolute;
+            bottom: -25px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .improvement-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: #2c3e50;
+            transition: transform 0.3s ease;
+        }
+        
+        .improvement-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="leaderboard-container">
+        <h3 class="section-title text-center mb-5">Overall Rank</h3>
+        
+        <!-- Best Performer Card -->
+        <div class="best-performer text-center mb-4">
+            <div class="trophy-icon mb-2">
+                <h1>🏆</h1>
+            </div>
+            <h4 class="mb-3">Best Performer</h4>
+            <h3 class="mb-2">Priyansh Bhandari</h3>
+            <p class="mb-0">Total Achievement: <strong>2500 XP</strong></p>
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div class="leaderboard-table">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th class="text-center">Rank</th>
+                        <th>Name</th>
+                        <th class="text-end">XP Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center"><div class="rank-number rank-1">1</div></td>
+                        <td>Priyansh Bhandari</td>
+                        <td class="text-end xp-points">2500 XP</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><div class="rank-number rank-2">2</div></td>
+                        <td>Anoop Singh</td>
+                        <td class="text-end xp-points">2300 XP</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><div class="rank-number rank-3">3</div></td>
+                        <td>Sumit Singh</td>
+                        <td class="text-end xp-points">2100 XP</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><div class="rank-number">4</div></td>
+                        <td>Princh sharma</td>
+                        <td class="text-end xp-points">1900 XP</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"><div class="rank-number">5</div></td>
+                        <td>Yash Vardhan</td>
+                        <td class="text-end xp-points">1800 XP</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-container">
+            <h4 class="text-center mb-4">Performance Graph</h4>
+            <div id="chartContainer">
+                <canvas id="leaderboardChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- NEW FEATURE: Progress Timeline -->
+        <div class="progress-timeline mt-5">
+            <h4 class="text-center mb-4">Progress Over Time</h4>
+            <div class="chart-container">
+                <canvas id="progressChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- NEW FEATURE: Performance Categories -->
+        <div class="category-performance mt-5">
+            <h4 class="text-center mb-4">Performance By Category</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4">
+                        <h5 class="mb-4">Category Breakdown</h5>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span><span class="category-icon bg-primary text-white">📝</span> Quizzes</span>
+                                <span>900 XP</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 36%" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100">36%</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span><span class="category-icon bg-success text-white">💻</span> Coding</span>
+                                <span>750 XP</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span><span class="category-icon bg-warning text-dark">🔍</span> Projects</span>
+                                <span>600 XP</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 24%" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100">24%</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span><span class="category-icon bg-danger text-white">👥</span> Participation</span>
+                                <span>250 XP</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NEW FEATURE: Achievement Badges -->
+        <div class="chart-container mt-5">
+            <h4 class="text-center mb-4">Achievement Badges</h4>
+            <div class="d-flex justify-content-center flex-wrap">
+                <div class="text-center">
+                    <div class="achievement-badge badge-gold">
+                        🥇
+                        <span class="badge-title">Top Performer</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="achievement-badge badge-silver">
+                        ⚡
+                        <span class="badge-title">Fast Learner</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="achievement-badge badge-bronze">
+                        🔥
+                        <span class="badge-title">10-Day Streak</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="achievement-badge" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                        💪
+                        <span class="badge-title">Consistent</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="achievement-badge" style="background: linear-gradient(135deg, #c3cfe2 0%, #c4e0e5 100%);">
+                        🎯
+                        <span class="badge-title">Goal Crusher</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NEW FEATURE: Improvement Metrics -->
+        <div class="mt-5">
+            <h4 class="section-title text-center mb-4">Most Improved Students</h4>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="improvement-card text-center">
+                        <h1>🚀</h1>
+                        <h5>Biggest Improvement</h5>
+                        <h4>Sumit Singh</h4>
+                        <p class="mb-1">Last Month: 1200 XP</p>
+                        <p class="mb-1">Current: 2100 XP</p>
+                        <h3 class="mt-2">+75% 📈</h3>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="improvement-card text-center" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                        <h1>⭐</h1>
+                        <h5>Most Consistent</h5>
+                        <h4>Anoop Singh</h4>
+                        <p>Completed Tasks: 45/50</p>
+                        <h3 class="mt-2">90% Rate</h3>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="improvement-card text-center" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">
+                        <h1>🏃</h1>
+                        <h5>Rapid Progress</h5>
+                        <h4>Princh Sharma</h4>
+                        <p>+400 XP in last 14 days</p>
+                        <h3 class="mt-2">28.6 XP/day</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- NEW FEATURE: Goals and Next Level -->
+        <div class="chart-container mt-5">
+            <h4 class="text-center mb-4">Next Level Goals</h4>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="p-4">
+                        <h5 class="mb-3">Rank Requirements</h5>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Bronze</span>
+                            <span>1000 XP</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #cd7f32;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Completed</div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Silver</span>
+                            <span>2000 XP</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #c0c0c0;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Completed</div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Gold</span>
+                            <span>3000 XP</span>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 83%; background-color: #ffd700;" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100">83%</div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span>Platinum</span>
+                            <span>4000 XP</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 62%; background-color: #e5e4e2;" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100">62%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="p-4 h-100 d-flex flex-column justify-content-center">
+                        <div class="text-center mb-4">
+                            <h5>Next Milestone</h5>
+                            <div class="achievement-badge mx-auto my-3" style="background: linear-gradient(135deg, #f9f295 0%, #ffd700 100%); font-size: 30px;">🌟</div>
+                            <h4>Gold Rank</h4>
+                        </div>
+                        <div class="text-center">
+                            <h6>Progress to Gold Rank</h6>
+                            <div class="progress" style="height: 20px;">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 83%;" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100">83%</div>
+                            </div>
+                            <p class="mt-3">Need 500 more XP to reach Gold Rank!</p>
+                            <button class="btn btn-warning mt-2">View Achievement Path</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Basic Leaderboard Chart (Existing)
+        const ctx = document.getElementById('leaderboardChart').getContext('2d');
+        const leaderboardChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Priyansh Bhandari', 'Anoop Singh', 'Sumit Singh', 'Princh Sharma', 'Yash Vardhan'],
+                datasets: [{
+                    label: 'XP Points',
+                    data: [2500, 2300, 2100, 1900, 1800],
+                    backgroundColor: [
+                        'rgba(255, 215, 0, 0.8)',    // Gold
+                        'rgba(192, 192, 192, 0.8)',  // Silver
+                        'rgba(205, 127, 50, 0.8)',   // Bronze
+                        'rgba(52, 152, 219, 0.8)',   // Blue
+                        'rgba(46, 204, 113, 0.8)'    // Green
+                    ],
+                    borderColor: [
+                        'rgba(255, 215, 0, 1)',
+                        'rgba(192, 192, 192, 1)',
+                        'rgba(205, 127, 50, 1)',
+                        'rgba(52, 152, 219, 1)',
+                        'rgba(46, 204, 113, 1)'
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 8,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        
+        // NEW CHART: Progress Timeline
+        const progressCtx = document.getElementById('progressChart').getContext('2d');
+        const progressChart = new Chart(progressCtx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [
+                    {
+                        label: 'Priyansh Bhandari',
+                        data: [1200, 1500, 1700, 2000, 2300, 2500],
+                        borderColor: 'rgba(255, 215, 0, 1)',
+                        backgroundColor: 'rgba(255, 215, 0, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Anoop Singh',
+                        data: [1100, 1350, 1600, 1900, 2100, 2300],
+                        borderColor: 'rgba(192, 192, 192, 1)',
+                        backgroundColor: 'rgba(192, 192, 192, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Sumit Singh',
+                        data: [800, 950, 1200, 1500, 1800, 2100],
+                        borderColor: 'rgba(205, 127, 50, 1)',
+                        backgroundColor: 'rgba(205, 127, 50, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'XP Points'
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                }
+            }
+        });
+        
+        // NEW CHART: Category Performance
+        const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+        const categoryChart = new Chart(categoryCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Quizzes', 'Coding', 'Projects', 'Participation', 'Assignments'],
+                datasets: [
+                    {
+                        label: 'Priyansh Bhandari',
+                        data: [90, 75, 85, 65, 80],
+                        backgroundColor: 'rgba(255, 215, 0, 0.2)',
+                        borderColor: 'rgba(255, 215, 0, 1)',
+                        pointBackgroundColor: 'rgba(255, 215, 0, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(255, 215, 0, 1)'
+                    },
+                    {
+                        label: 'Class Average',
+                        data: [70, 65, 60, 65, 55],
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        pointBackgroundColor: 'rgba(52, 152, 219, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                elements: {
+                    line: {
+                        borderWidth: 3
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        });
+    </script>
+
+    <div id="footer-placeholder"></div>
+    <script src="index1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,1310 @@
+{
+    "course1": {
+        "title": "Math For Beginner",
+        "videoId": "Fubh6iYyZ94",
+        "duration": "6 hours",
+        "faculty": "Dr. Amit Sharma",
+        "description": "A beginner-friendly course to kickstart your journey in programming.",
+        "level": "Beginner",
+        "quizzes": {
+            "25": [
+                {
+                    "question": "What is 2 + 3?",
+                    "options": [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+                    "answer": "5"
+                },
+                {
+                    "question": "Which symbol is used for subtraction?",
+                    "options": [
+                        "+",
+                        "-",
+                        "*",
+                        "/"
+                    ],
+                    "answer": "-"
+                },
+                {
+                    "question": "What is 10 - 4?",
+                    "options": [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+                    "answer": "6"
+                },
+                {
+                    "question": "How many sides does a triangle have?",
+                    "options": [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+                    "answer": "3"
+                },
+                {
+                    "question": "What is 5 × 2?",
+                    "options": [
+                        "7",
+                        "8",
+                        "10",
+                        "12"
+                    ],
+                    "answer": "10"
+                }
+            ],
+            "50": [
+                {
+                    "question": "What is 12 ÷ 3?",
+                    "options": [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "answer": "4"
+                },
+                {
+                    "question": "Which is an even number?",
+                    "options": [
+                        "1",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+                    "answer": "4"
+                },
+                {
+                    "question": "What is 7 + 8?",
+                    "options": [
+                        "13",
+                        "14",
+                        "15",
+                        "16"
+                    ],
+                    "answer": "15"
+                },
+                {
+                    "question": "What is the value of 3²?",
+                    "options": [
+                        "6",
+                        "9",
+                        "12",
+                        "15"
+                    ],
+                    "answer": "9"
+                },
+                {
+                    "question": "How many degrees in a right angle?",
+                    "options": [
+                        "45",
+                        "90",
+                        "180",
+                        "360"
+                    ],
+                    "answer": "90"
+                }
+            ],
+            "75": [
+                {
+                    "question": "What is 15 - 9?",
+                    "options": [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+                    "answer": "6"
+                },
+                {
+                    "question": "Which is a prime number?",
+                    "options": [
+                        "4",
+                        "6",
+                        "7",
+                        "9"
+                    ],
+                    "answer": "7"
+                },
+                {
+                    "question": "What is 4 × 3?",
+                    "options": [
+                        "10",
+                        "12",
+                        "14",
+                        "16"
+                    ],
+                    "answer": "12"
+                },
+                {
+                    "question": "What is half of 20?",
+                    "options": [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+                    "answer": "10"
+                },
+                {
+                    "question": "What is 10 + 5 - 3?",
+                    "options": [
+                        "10",
+                        "11",
+                        "12",
+                        "13"
+                    ],
+                    "answer": "12"
+                }
+            ],
+            "100": [
+                {
+                    "question": "What is 25 ÷ 5?",
+                    "options": [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+                    "answer": "5"
+                },
+                {
+                    "question": "What is 6 + 7?",
+                    "options": [
+                        "11",
+                        "12",
+                        "13",
+                        "14"
+                    ],
+                    "answer": "13"
+                },
+                {
+                    "question": "Which number is odd?",
+                    "options": [
+                        "2",
+                        "4",
+                        "6",
+                        "9"
+                    ],
+                    "answer": "9"
+                },
+                {
+                    "question": "What is 8 × 2?",
+                    "options": [
+                        "14",
+                        "16",
+                        "18",
+                        "20"
+                    ],
+                    "answer": "16"
+                },
+                {
+                    "question": "How many sides does a square have?",
+                    "options": [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "answer": "4"
+                }
+            ]
+        }
+    },
+    "course2": {
+        "title": "Science Fundamentals",
+        "videoId": "wuH5KOAL-_Q",
+        "duration": "8 hours",
+        "faculty": "Prof. Neha Gupta",
+        "description": "Dive deep into advanced concepts and techniques.",
+        "level": "Advanced",
+        "quizzes": {
+            "25": [
+                {
+                    "question": "What gas do plants use for photosynthesis?",
+                    "options": [
+                        "Oxygen",
+                        "Carbon Dioxide",
+                        "Nitrogen",
+                        "Hydrogen"
+                    ],
+                    "answer": "Carbon Dioxide"
+                },
+                {
+                    "question": "What is the boiling point of water?",
+                    "options": [
+                        "50°C",
+                        "75°C",
+                        "100°C",
+                        "150°C"
+                    ],
+                    "answer": "100°C"
+                },
+                {
+                    "question": "Which planet is closest to the Sun?",
+                    "options": [
+                        "Earth",
+                        "Mars",
+                        "Mercury",
+                        "Venus"
+                    ],
+                    "answer": "Mercury"
+                },
+                {
+                    "question": "What is H₂O?",
+                    "options": [
+                        "Salt",
+                        "Water",
+                        "Sugar",
+                        "Oxygen"
+                    ],
+                    "answer": "Water"
+                },
+                {
+                    "question": "What force keeps us on the ground?",
+                    "options": [
+                        "Friction",
+                        "Gravity",
+                        "Magnetism",
+                        "Tension"
+                    ],
+                    "answer": "Gravity"
+                }
+            ],
+            "50": [
+                {
+                    "question": "What is the atomic number of Carbon?",
+                    "options": [
+                        "4",
+                        "6",
+                        "8",
+                        "10"
+                    ],
+                    "answer": "6"
+                },
+                {
+                    "question": "Which is a renewable energy source?",
+                    "options": [
+                        "Coal",
+                        "Oil",
+                        "Solar",
+                        "Natural Gas"
+                    ],
+                    "answer": "Solar"
+                },
+                {
+                    "question": "What gas do humans breathe out?",
+                    "options": [
+                        "Oxygen",
+                        "Carbon Dioxide",
+                        "Nitrogen",
+                        "Helium"
+                    ],
+                    "answer": "Carbon Dioxide"
+                },
+                {
+                    "question": "What is the main source of Earth’s energy?",
+                    "options": [
+                        "Moon",
+                        "Sun",
+                        "Wind",
+                        "Water"
+                    ],
+                    "answer": "Sun"
+                },
+                {
+                    "question": "What type of rock is granite?",
+                    "options": [
+                        "Igneous",
+                        "Sedimentary",
+                        "Metamorphic",
+                        "Fossil"
+                    ],
+                    "answer": "Igneous"
+                }
+            ],
+            "75": [
+                {
+                    "question": "Which organ pumps blood?",
+                    "options": [
+                        "Lungs",
+                        "Heart",
+                        "Liver",
+                        "Kidneys"
+                    ],
+                    "answer": "Heart"
+                },
+                {
+                    "question": "What is the chemical symbol for Gold?",
+                    "options": [
+                        "Ag",
+                        "Au",
+                        "Fe",
+                        "Cu"
+                    ],
+                    "answer": "Au"
+                },
+                {
+                    "question": "What causes tides on Earth?",
+                    "options": [
+                        "Sun",
+                        "Moon",
+                        "Wind",
+                        "Earth’s rotation"
+                    ],
+                    "answer": "Moon"
+                },
+                {
+                    "question": "What is the freezing point of water?",
+                    "options": [
+                        "0°C",
+                        "10°C",
+                        "32°C",
+                        "50°C"
+                    ],
+                    "answer": "0°C"
+                },
+                {
+                    "question": "Which is a conductor of electricity?",
+                    "options": [
+                        "Wood",
+                        "Plastic",
+                        "Copper",
+                        "Rubber"
+                    ],
+                    "answer": "Copper"
+                }
+            ],
+            "100": [
+                {
+                    "question": "What gas is most abundant in Earth’s atmosphere?",
+                    "options": [
+                        "Oxygen",
+                        "Nitrogen",
+                        "Carbon Dioxide",
+                        "Argon"
+                    ],
+                    "answer": "Nitrogen"
+                },
+                {
+                    "question": "What is the unit of force?",
+                    "options": [
+                        "Watt",
+                        "Newton",
+                        "Joule",
+                        "Volt"
+                    ],
+                    "answer": "Newton"
+                },
+                {
+                    "question": "Which scientist proposed gravity?",
+                    "options": [
+                        "Einstein",
+                        "Newton",
+                        "Galileo",
+                        "Tesla"
+                    ],
+                    "answer": "Newton"
+                },
+                {
+                    "question": "What is the speed of light (approx)?",
+                    "options": [
+                        "300,000 km/s",
+                        "150,000 km/s",
+                        "500,000 km/s",
+                        "1,000 km/s"
+                    ],
+                    "answer": "300,000 km/s"
+                },
+                {
+                    "question": "What type of energy is stored in food?",
+                    "options": [
+                        "Kinetic",
+                        "Potential",
+                        "Chemical",
+                        "Thermal"
+                    ],
+                    "answer": "Chemical"
+                }
+            ]
+        }
+    },
+    "course3": {
+        "title": "English Grammar",
+        "videoId": "QdAgnyD4xhY",
+        "duration": "4 hours",
+        "faculty": "Mr. Rahul Verma",
+        "description": "Learn the basics of design and creativity.",
+        "level": "Beginner",
+        "quizzes": {
+            "25": [
+                {
+                    "question": "What is a noun?",
+                    "options": [
+                        "Action word",
+                        "Naming word",
+                        "Describing word",
+                        "Connecting word"
+                    ],
+                    "answer": "Naming word"
+                },
+                {
+                    "question": "Which is a verb?",
+                    "options": [
+                        "Dog",
+                        "Run",
+                        "Happy",
+                        "And"
+                    ],
+                    "answer": "Run"
+                },
+                {
+                    "question": "What is the past tense of 'go'?",
+                    "options": [
+                        "Goes",
+                        "Went",
+                        "Going",
+                        "Gone"
+                    ],
+                    "answer": "Went"
+                },
+                {
+                    "question": "Which is an adjective?",
+                    "options": [
+                        "Quick",
+                        "Walk",
+                        "Book",
+                        "On"
+                    ],
+                    "answer": "Quick"
+                },
+                {
+                    "question": "What joins two sentences?",
+                    "options": [
+                        "Noun",
+                        "Verb",
+                        "Conjunction",
+                        "Adverb"
+                    ],
+                    "answer": "Conjunction"
+                }
+            ],
+            "50": [
+                {
+                    "question": "What is the plural of 'child'?",
+                    "options": [
+                        "Childs",
+                        "Children",
+                        "Childes",
+                        "Child"
+                    ],
+                    "answer": "Children"
+                },
+                {
+                    "question": "Which is a pronoun?",
+                    "options": [
+                        "Table",
+                        "She",
+                        "Fast",
+                        "Because"
+                    ],
+                    "answer": "She"
+                },
+                {
+                    "question": "What is the opposite of 'big'?",
+                    "options": [
+                        "Large",
+                        "Small",
+                        "Tall",
+                        "Wide"
+                    ],
+                    "answer": "Small"
+                },
+                {
+                    "question": "Which is a complete sentence?",
+                    "options": [
+                        "Running fast",
+                        "She runs",
+                        "Big dog",
+                        "In the park"
+                    ],
+                    "answer": "She runs"
+                },
+                {
+                    "question": "What is 'am' an example of?",
+                    "options": [
+                        "Verb",
+                        "Noun",
+                        "Adjective",
+                        "Preposition"
+                    ],
+                    "answer": "Verb"
+                }
+            ],
+            "75": [
+                {
+                    "question": "What is the past tense of 'eat'?",
+                    "options": [
+                        "Eats",
+                        "Ate",
+                        "Eaten",
+                        "Eating"
+                    ],
+                    "answer": "Ate"
+                },
+                {
+                    "question": "Which is an adverb?",
+                    "options": [
+                        "Dog",
+                        "Quickly",
+                        "Blue",
+                        "Under"
+                    ],
+                    "answer": "Quickly"
+                },
+                {
+                    "question": "What is a group of words called?",
+                    "options": [
+                        "Sentence",
+                        "Letter",
+                        "Word",
+                        "Sound"
+                    ],
+                    "answer": "Sentence"
+                },
+                {
+                    "question": "Which is a preposition?",
+                    "options": [
+                        "Run",
+                        "On",
+                        "Happy",
+                        "They"
+                    ],
+                    "answer": "On"
+                },
+                {
+                    "question": "What does a period (.) do?",
+                    "options": [
+                        "Asks a question",
+                        "Ends a sentence",
+                        "Shows excitement",
+                        "Joins words"
+                    ],
+                    "answer": "Ends a sentence"
+                }
+            ],
+            "100": [
+                {
+                    "question": "What is the plural of 'mouse'?",
+                    "options": [
+                        "Mouses",
+                        "Mice",
+                        "Mousees",
+                        "Mouce"
+                    ],
+                    "answer": "Mice"
+                },
+                {
+                    "question": "Which is a linking verb?",
+                    "options": [
+                        "Jump",
+                        "Is",
+                        "Fast",
+                        "Book"
+                    ],
+                    "answer": "Is"
+                },
+                {
+                    "question": "What is the opposite of 'happy'?",
+                    "options": [
+                        "Sad",
+                        "Joyful",
+                        "Big",
+                        "Quick"
+                    ],
+                    "answer": "Sad"
+                },
+                {
+                    "question": "Which is a question word?",
+                    "options": [
+                        "Run",
+                        "Who",
+                        "Table",
+                        "And"
+                    ],
+                    "answer": "Who"
+                },
+                {
+                    "question": "What is 'I' an example of?",
+                    "options": [
+                        "Noun",
+                        "Verb",
+                        "Pronoun",
+                        "Adjective"
+                    ],
+                    "answer": "Pronoun"
+                }
+            ]
+        }
+    },
+    "course4": {
+        "title": "Beginner Coding",
+        "videoId": "HIj8wU_rGIU",
+        "duration": "10 hours",
+        "faculty": "Dr. Priya Singh",
+        "description": "Master the art of data analysis and visualization.",
+        "level": "Intermediate",
+        "quizzes": {
+            "25": [
+                {
+                    "question": "What is a variable?",
+                    "options": [
+                        "A fixed value",
+                        "A data container",
+                        "A loop",
+                        "A function"
+                    ],
+                    "answer": "A data container"
+                },
+                {
+                    "question": "Which symbol starts a comment in Python?",
+                    "options": [
+                        "//",
+                        "#",
+                        "/*",
+                        "--"
+                    ],
+                    "answer": "#"
+                },
+                {
+                    "question": "What does 'print' do in coding?",
+                    "options": [
+                        "Saves data",
+                        "Displays output",
+                        "Runs a loop",
+                        "Defines a function"
+                    ],
+                    "answer": "Displays output"
+                },
+                {
+                    "question": "Which is a data type?",
+                    "options": [
+                        "String",
+                        "Loop",
+                        "Function",
+                        "Code"
+                    ],
+                    "answer": "String"
+                },
+                {
+                    "question": "What is 5 > 3?",
+                    "options": [
+                        "True",
+                        "False",
+                        "Error",
+                        "None"
+                    ],
+                    "answer": "True"
+                }
+            ],
+            "50": [
+                {
+                    "question": "What is a loop used for?",
+                    "options": [
+                        "Storing data",
+                        "Repeating code",
+                        "Displaying text",
+                        "Comparing values"
+                    ],
+                    "answer": "Repeating code"
+                },
+                {
+                    "question": "Which is a conditional statement?",
+                    "options": [
+                        "for",
+                        "if",
+                        "while",
+                        "print"
+                    ],
+                    "answer": "if"
+                },
+                {
+                    "question": "What does '==' mean?",
+                    "options": [
+                        "Assignment",
+                        "Equality",
+                        "Greater than",
+                        "Less than"
+                    ],
+                    "answer": "Equality"
+                },
+                {
+                    "question": "Which is a number data type?",
+                    "options": [
+                        "Integer",
+                        "Text",
+                        "Boolean",
+                        "List"
+                    ],
+                    "answer": "Integer"
+                },
+                {
+                    "question": "What does 'input()' do?",
+                    "options": [
+                        "Gets user input",
+                        "Prints text",
+                        "Runs a loop",
+                        "Defines a variable"
+                    ],
+                    "answer": "Gets user input"
+                }
+            ],
+            "75": [
+                {
+                    "question": "What is an array called in Python?",
+                    "options": [
+                        "Array",
+                        "List",
+                        "Set",
+                        "Dictionary"
+                    ],
+                    "answer": "List"
+                },
+                {
+                    "question": "Which keyword defines a function?",
+                    "options": [
+                        "func",
+                        "def",
+                        "function",
+                        "do"
+                    ],
+                    "answer": "def"
+                },
+                {
+                    "question": "What is 'True' an example of?",
+                    "options": [
+                        "String",
+                        "Integer",
+                        "Boolean",
+                        "Float"
+                    ],
+                    "answer": "Boolean"
+                },
+                {
+                    "question": "What does 'len()' do?",
+                    "options": [
+                        "Adds items",
+                        "Returns length",
+                        "Prints text",
+                        "Loops code"
+                    ],
+                    "answer": "Returns length"
+                },
+                {
+                    "question": "Which is a loop?",
+                    "options": [
+                        "if",
+                        "for",
+                        "print",
+                        "input"
+                    ],
+                    "answer": "for"
+                }
+            ],
+            "100": [
+                {
+                    "question": "What does 'append()' do to a list?",
+                    "options": [
+                        "Removes an item",
+                        "Adds an item",
+                        "Sorts the list",
+                        "Clears the list"
+                    ],
+                    "answer": "Adds an item"
+                },
+                {
+                    "question": "Which is a comparison operator?",
+                    "options": [
+                        "=",
+                        "==",
+                        "+",
+                        "-"
+                    ],
+                    "answer": "=="
+                },
+                {
+                    "question": "What is a syntax error?",
+                    "options": [
+                        "Logic mistake",
+                        "Code mistake",
+                        "Runtime error",
+                        "User error"
+                    ],
+                    "answer": "Code mistake"
+                },
+                {
+                    "question": "Which keyword exits a loop?",
+                    "options": [
+                        "stop",
+                        "break",
+                        "exit",
+                        "end"
+                    ],
+                    "answer": "break"
+                },
+                {
+                    "question": "What is '3.14' an example of?",
+                    "options": [
+                        "Integer",
+                        "Float",
+                        "String",
+                        "Boolean"
+                    ],
+                    "answer": "Float"
+                }
+            ]
+        }
+    },
+    "course5": {
+        "title": "Physics Essentials",
+        "videoId": "DFYrcVlO6qo",
+        "duration": "5 hours",
+        "faculty": "Ms. Sneha Patel",
+        "description": "Explore the fundamentals of modern frameworks.",
+        "level": "Intermediate",
+        "quizzes": {
+            "25": [
+                {
+                    "question": "What is the unit of speed?",
+                    "options": [
+                        "Meter",
+                        "m/s",
+                        "Kg",
+                        "Newton"
+                    ],
+                    "answer": "m/s"
+                },
+                {
+                    "question": "What is energy measured in?",
+                    "options": [
+                        "Joules",
+                        "Watts",
+                        "Volts",
+                        "Amps"
+                    ],
+                    "answer": "Joules"
+                },
+                {
+                    "question": "What causes objects to fall?",
+                    "options": [
+                        "Friction",
+                        "Gravity",
+                        "Magnetism",
+                        "Pressure"
+                    ],
+                    "answer": "Gravity"
+                },
+                {
+                    "question": "Which is a type of energy?",
+                    "options": [
+                        "Kinetic",
+                        "Color",
+                        "Shape",
+                        "Size"
+                    ],
+                    "answer": "Kinetic"
+                },
+                {
+                    "question": "What is the formula for speed?",
+                    "options": [
+                        "Distance × Time",
+                        "Distance / Time",
+                        "Time / Distance",
+                        "Distance + Time"
+                    ],
+                    "answer": "Distance / Time"
+                }
+            ],
+            "50": [
+                {
+                    "question": "What is acceleration?",
+                    "options": [
+                        "Speed increase",
+                        "Force decrease",
+                        "Mass increase",
+                        "Time decrease"
+                    ],
+                    "answer": "Speed increase"
+                },
+                {
+                    "question": "What is the unit of force?",
+                    "options": [
+                        "Newton",
+                        "Joule",
+                        "Watt",
+                        "Meter"
+                    ],
+                    "answer": "Newton"
+                },
+                {
+                    "question": "What does F = ma represent?",
+                    "options": [
+                        "Energy",
+                        "Force",
+                        "Speed",
+                        "Power"
+                    ],
+                    "answer": "Force"
+                },
+                {
+                    "question": "Which is a vector quantity?",
+                    "options": [
+                        "Speed",
+                        "Distance",
+                        "Velocity",
+                        "Time"
+                    ],
+                    "answer": "Velocity"
+                },
+                {
+                    "question": "What is work measured in?",
+                    "options": [
+                        "Joules",
+                        "Newtons",
+                        "Meters",
+                        "Seconds"
+                    ],
+                    "answer": "Joules"
+                }
+            ],
+            "75": [
+                {
+                    "question": "What is the unit of power?",
+                    "options": [
+                        "Joule",
+                        "Watt",
+                        "Newton",
+                        "Meter"
+                    ],
+                    "answer": "Watt"
+                },
+                {
+                    "question": "What is momentum?",
+                    "options": [
+                        "Mass × Velocity",
+                        "Mass / Velocity",
+                        "Force × Time",
+                        "Energy / Time"
+                    ],
+                    "answer": "Mass × Velocity"
+                },
+                {
+                    "question": "Which law states 'action-reaction'?",
+                    "options": [
+                        "1st",
+                        "2nd",
+                        "3rd",
+                        "4th"
+                    ],
+                    "answer": "3rd"
+                },
+                {
+                    "question": "What is the speed of sound (approx)?",
+                    "options": [
+                        "340 m/s",
+                        "500 m/s",
+                        "1000 m/s",
+                        "300,000 m/s"
+                    ],
+                    "answer": "340 m/s"
+                },
+                {
+                    "question": "What type of energy is in a stretched spring?",
+                    "options": [
+                        "Kinetic",
+                        "Potential",
+                        "Thermal",
+                        "Chemical"
+                    ],
+                    "answer": "Potential"
+                }
+            ],
+            "100": [
+                {
+                    "question": "What is the unit of electric current?",
+                    "options": [
+                        "Volt",
+                        "Ampere",
+                        "Ohm",
+                        "Watt"
+                    ],
+                    "answer": "Ampere"
+                },
+                {
+                    "question": "What does Ohm’s Law state?",
+                    "options": [
+                        "V = IR",
+                        "F = ma",
+                        "E = mc²",
+                        "P = IV"
+                    ],
+                    "answer": "V = IR"
+                },
+                {
+                    "question": "What is the unit of resistance?",
+                    "options": [
+                        "Ohm",
+                        "Volt",
+                        "Ampere",
+                        "Watt"
+                    ],
+                    "answer": "Ohm"
+                },
+                {
+                    "question": "What is the acceleration due to gravity?",
+                    "options": [
+                        "9.8 m/s²",
+                        "5 m/s²",
+                        "12 m/s²",
+                        "15 m/s²"
+                    ],
+                    "answer": "9.8 m/s²"
+                },
+                {
+                    "question": "Which is a form of heat transfer?",
+                    "options": [
+                        "Conduction",
+                        "Friction",
+                        "Velocity",
+                        "Mass"
+                    ],
+                    "answer": "Conduction"
+                }
+            ]
+        }
+    },
+    "course6": {
+        "title": "Chemistry Basics",
+        "videoId": "iw96eHLe1dc",
+        "duration": "7 hours",
+        "faculty": "Khan Sir ",
+        "description": "Learn Basic chemistry from best teacher.",
+        "level": "Basic",
+        "quizzes": {
+            "25": [
+                {
+                    "question": "What is the symbol for Oxygen?",
+                    "options": [
+                        "O",
+                        "Ox",
+                        "O₂",
+                        "Og"
+                    ],
+                    "answer": "O"
+                },
+                {
+                    "question": "What is H₂O?",
+                    "options": [
+                        "Salt",
+                        "Water",
+                        "Sugar",
+                        "Acid"
+                    ],
+                    "answer": "Water"
+                },
+                {
+                    "question": "Which is an element?",
+                    "options": [
+                        "Water",
+                        "Carbon",
+                        "Air",
+                        "Salt"
+                    ],
+                    "answer": "Carbon"
+                },
+                {
+                    "question": "What is the atomic number of Hydrogen?",
+                    "options": [
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "What type of bond is in NaCl?",
+                    "options": [
+                        "Covalent",
+                        "Ionic",
+                        "Metallic",
+                        "Hydrogen"
+                    ],
+                    "answer": "Ionic"
+                }
+            ],
+            "50": [
+                {
+                    "question": "What gas do we breathe in?",
+                    "options": [
+                        "Nitrogen",
+                        "Oxygen",
+                        "Carbon Dioxide",
+                        "Helium"
+                    ],
+                    "answer": "Oxygen"
+                },
+                {
+                    "question": "What is the pH of pure water?",
+                    "options": [
+                        "5",
+                        "7",
+                        "9",
+                        "11"
+                    ],
+                    "answer": "7"
+                },
+                {
+                    "question": "Which is a noble gas?",
+                    "options": [
+                        "Helium",
+                        "Oxygen",
+                        "Nitrogen",
+                        "Carbon"
+                    ],
+                    "answer": "Helium"
+                },
+                {
+                    "question": "What is CO₂?",
+                    "options": [
+                        "Carbon Monoxide",
+                        "Carbon Dioxide",
+                        "Cobalt",
+                        "Oxygen"
+                    ],
+                    "answer": "Carbon Dioxide"
+                },
+                {
+                    "question": "What is the atomic number of Carbon?",
+                    "options": [
+                        "4",
+                        "6",
+                        "8",
+                        "10"
+                    ],
+                    "answer": "6"
+                }
+            ],
+            "75": [
+                {
+                    "question": "What is an acid’s pH range?",
+                    "options": [
+                        "0-6",
+                        "7",
+                        "8-14",
+                        "None"
+                    ],
+                    "answer": "0-6"
+                },
+                {
+                    "question": "Which is a metal?",
+                    "options": [
+                        "Oxygen",
+                        "Sodium",
+                        "Chlorine",
+                        "Sulfur"
+                    ],
+                    "answer": "Sodium"
+                },
+                {
+                    "question": "What gas is produced in photosynthesis?",
+                    "options": [
+                        "Oxygen",
+                        "Carbon Dioxide",
+                        "Nitrogen",
+                        "Hydrogen"
+                    ],
+                    "answer": "Oxygen"
+                },
+                {
+                    "question": "What is the symbol for Iron?",
+                    "options": [
+                        "Fe",
+                        "Ir",
+                        "In",
+                        "I"
+                    ],
+                    "answer": "Fe"
+                },
+                {
+                    "question": "What type of reaction releases heat?",
+                    "options": [
+                        "Endothermic",
+                        "Exothermic",
+                        "Neutral",
+                        "Covalent"
+                    ],
+                    "answer": "Exothermic"
+                }
+            ],
+            "100": [
+                {
+                    "question": "What is the atomic mass unit of Hydrogen?",
+                    "options": [
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+                    "answer": "1"
+                },
+                {
+                    "question": "Which is a compound?",
+                    "options": [
+                        "Gold",
+                        "Water",
+                        "Oxygen",
+                        "Iron"
+                    ],
+                    "answer": "Water"
+                },
+                {
+                    "question": "What is the symbol for Sodium?",
+                    "options": [
+                        "S",
+                        "So",
+                        "Na",
+                        "N"
+                    ],
+                    "answer": "Na"
+                },
+                {
+                    "question": "What is a catalyst?",
+                    "options": [
+                        "Slows reaction",
+                        "Speeds reaction",
+                        "Stops reaction",
+                        "None"
+                    ],
+                    "answer": "Speeds reaction"
+                },
+                {
+                    "question": "Which element has 8 protons?",
+                    "options": [
+                        "Nitrogen",
+                        "Oxygen",
+                        "Carbon",
+                        "Helium"
+                    ],
+                    "answer": "Oxygen"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Footer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Custom Footer CSS -->
+    <style>
+
+/* Footer Styling */
+.footer-full-width {
+    /* background: linear-gradient(135deg, #1A1F2C 0%, #2d3a4a 100%); */
+    background-color: #2940D3;
+    padding: 3rem 0 2rem;
+    position: relative;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.footer-full-width::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    /* background: linear-gradient(90deg, #9b87f5, #1EAEDB, #9b87f5); */
+    background: white;
+    animation: gradient-shift 3s ease infinite;
+}
+
+.footer-logo {
+    max-width: 150px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.05);
+}
+
+.footer-heading {
+    position: relative;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    display: inline-block;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 3px;
+    background-color: #f7f7f9;
+    transition: width 0.3s ease;
+}
+
+.footer-col:hover .footer-heading::after {
+    width: 100%;
+}
+
+.footer-text {
+    color: #ffffff;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links li {
+    margin-bottom: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.footer-links li:hover {
+    transform: translateX(5px);
+}
+
+.footer-links a, .footer-links button {
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-left: 0;
+    text-align: left;
+}
+
+.footer-links a:hover, .footer-links button:hover {
+    color: #7a06b0 !important;
+}
+
+.footer-links a::before, .footer-links button::before {
+    content: '→';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover::before, .footer-links button:hover::before {
+    opacity: 1;
+    left: -15px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    background-color: #9b87f5;
+    color: #fff;
+}
+
+.footer-bottom {
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    z-index: 1000;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #9b87f5;
+    color: white;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#back-to-top:hover {
+    background-color: #8673d8;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#back-to-top i {
+    font-size: 1.2rem;
+}
+
+/* Feedback Modal Styling */
+#feedbackModal .modal-header {
+    background: linear-gradient(135deg, #1A1F2C 0%, #2d3a4a 100%);
+    color: white;
+    border-bottom: 1px solid #9b87f5;
+}
+
+#feedbackModal .modal-content {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#feedbackModal .btn-close {
+    color: white;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+#feedbackModal .btn-close:hover {
+    opacity: 1;
+}
+
+#feedbackModal .modal-body {
+    background-color: #ffffff;
+    color: #333;
+    padding: 2rem;
+}
+
+#feedbackModal .form-label {
+    font-weight: 500;
+}
+
+#feedbackModal .form-control,
+#feedbackModal .form-select {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+#feedbackModal .form-control:focus,
+#feedbackModal .form-select:focus {
+    border-color: #9b87f5;
+    box-shadow: 0 0 0 0.25rem rgba(155, 135, 245, 0.25);
+}
+
+#feedbackModal .btn-primary {
+    background-color: #9b87f5;
+    border: none;
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#feedbackModal .btn-primary:hover {
+    background-color: #8673d8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer-col {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.footer-col:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.footer-col:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.footer-col:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-col {
+        margin-bottom: 2rem;
+    }
+    
+    .social-icons {
+        justify-content: flex-start;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <!-- Enhanced Footer -->
+    <footer class="bg-primary text-white py-4 footer-full-width">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-col">
+                    <h5 class="footer-heading">About NPS eLearning</h5>
+                    <p class="footer-text">Empowering students with interactive and gamified learning experiences. Our platform combines education with fun to make learning an engaging journey.</p>
+                    <img src="/IMG/logo1.jpg" alt="NPS eLearning Logo" class="footer-logo img-fluid rounded">
+                </div>
+                <div class="col-md-4 footer-col">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="AboutUs.html"><i class="bi bi-info-circle me-2"></i>About Us</a></li>
+                        <li>
+                            <button class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                                <i class="bi bi-chat-dots me-2"></i>Give Your Feedback
+                            </button>
+                        </li>
+                        <li><a href="Courses.html"><i class="bi bi-journal-text me-2"></i>Our Courses</a></li>
+                        <li><a href="Rank.html"><i class="bi bi-trophy me-2"></i>Leaderboard</a></li>
+                        <li><a href="AboutUs.html"><i class="bi bi-envelope me-2"></i>Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 footer-col">
+                    <h5 class="footer-heading">Connect With Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                        <a href="https://x.com/bfcstar" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        <a href="https://www.instagram.com/bfcstar" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                    <p class="footer-text">Subscribe to our newsletter for updates</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Your email" aria-label="Your email">
+                        <button class="btn btn-light" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom text-center">
+                <p class="copyright">© Anoop Singh // Reg No- 12302545</p>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button id="back-to-top" class="btn" title="Back to Top">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+
+        <!-- Feedback Modal -->
+        <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="feedbackModalLabel">
+                            <i class="bi bi-chat-square-text me-2"></i>Give Feedback
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="feedbackForm" class="needs-validation" novalidate>
+                            <!-- Name -->
+                            <div class="mb-3">
+                                <label for="feedbackName" class="form-label">
+                                    <i class="bi bi-person me-2"></i>Name
+                                </label>
+                                <input type="text" class="form-control" id="feedbackName" required>
+                                <div class="invalid-feedback">Please enter your name.</div>
+                            </div>
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="feedbackEmail" class="form-label">
+                                    <i class="bi bi-envelope me-2"></i>Email
+                                </label>
+                                <input type="email" class="form-control" id="feedbackEmail" required>
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                            </div>
+                            <!-- Rating -->
+                            <div class="mb-3">
+                                <label for="feedbackRating" class="form-label">
+                                    <i class="bi bi-star me-2"></i>Rating
+                                </label>
+                                <select class="form-select" id="feedbackRating" required>
+                                    <option value="" disabled selected>Choose a rating...</option>
+                                    <option value="1">1 - Poor</option>
+                                    <option value="2">2 - Fair</option>
+                                    <option value="3">3 - Good</option>
+                                    <option value="4">4 - Very Good</option>
+                                    <option value="5">5 - Excellent</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a rating.</div>
+                            </div>
+                            <!-- Message -->
+                            <div class="mb-3">
+                                <label for="feedbackMessage" class="form-label">
+                                    <i class="bi bi-chat-left-text me-2"></i>Message
+                                </label>
+                                <textarea class="form-control" id="feedbackMessage" rows="3" required></textarea>
+                                <div class="invalid-feedback">Please enter your feedback message.</div>
+                            </div>
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-send me-2"></i>Submit Feedback
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Back to Top Script -->
+    <script>
+        // Show/hide Back to Top button based on scroll position
+        window.onscroll = function() {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopButton.style.display = 'flex';
+                backToTopButton.style.opacity = '1';
+            } else {
+                backToTopButton.style.opacity = '0';
+                setTimeout(() => {
+                    if (backToTopButton.style.opacity === '0') {
+                        backToTopButton.style.display = 'none';
+                    }
+                }, 300);
+            }
+        };
+
+        // Scroll to top when Back to Top button is clicked
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form validation
+        (function () {
+            'use strict'
+            
+            // Fetch all forms we want to apply validation to
+            var forms = document.querySelectorAll('.needs-validation');
+            
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        } else {
+                            event.preventDefault();
+                            // Show success message
+                            alert('Thank you for your feedback!');
+                            // Reset form
+                            form.reset();
+                            // Close modal
+                            var feedbackModal = bootstrap.Modal.getInstance(document.getElementById('feedbackModal'));
+                            feedbackModal.hide();
+                        }
+                        
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+        })();
+    </script>
+</body>
+
+</html>

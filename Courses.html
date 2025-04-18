@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses - NPS eLearning</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="CoursesStyle.css".css">
+</head>
+<body style="padding-top: 30px;">
+  <!-- Navbar -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Courses Section -->
+  <section class="courses-container">
+    <h2 class="page-title">Discover Our Courses</h2>
+
+    <!-- Search Bar -->
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <input type="text" id="searchInput" class="form-control search-input" placeholder="Search for a course by name or keyword...">
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar mb-4">
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <select id="categoryFilter" class="form-select filter-select">
+            <option value="all">All Categories</option>
+            <option value="math">Math</option>
+            <option value="science">Science</option>
+            <option value="english">English</option>
+            <option value="coding">Coding</option>
+            <option value="physics">Physics</option>
+            <option value="chemistry">Chemistry</option>
+          </select>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <select id="levelFilter" class="form-select filter-select">
+            <option value="all">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <button id="resetFilters" class="btn bg-warning reset-button w-100">Reset Filters</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spinner -->
+    <div class="text-center my-4 d-none spinner-container" id="searchSpinner">
+      <div class="spinner-border" style="color: #441fe8;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2 text-muted">Searching for courses...</p>
+    </div>
+
+    <!-- Course Cards -->
+    <div class="row" id="courseList">
+      <!-- Course 1 -->
+      <div class="col-lg-4 col-md-6 course-card" data-category="math" data-level="beginner">
+        <div class="card">
+          <img src="../IMG/math.png" class="card-img-top" alt="Math for Beginners">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h5 class="card-title">Math for Beginners</h5>
+              <span class="badge bg-primary">New</span>
+            </div>
+            <p class="card-text"><i class="bi bi-bar-chart-fill me-2"></i>Beginner | <i class="bi bi-calendar3 me-2"></i>4 Weeks | <i class="bi bi-star-fill me-2"></i>4.5</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="xp-badge"><i class="bi bi-lightning-charge-fill me-1"></i>Earn 200 XP</span>
+              <small class="text-muted">24 students enrolled</small>
+            </div>
+            <a href="CourseVID.html?id=course1" class="btn enroll-button bg-warning d-block mt-3">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="col-lg-4 col-md-6 course-card" data-category="science" data-level="beginner">
+        <div class="card">
+          <img src="../IMG/science.png" class="card-img-top" alt="Science Fundamentals">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h5 class="card-title">Science Fundamentals</h5>
+            </div>
+            <p class="card-text"><i class="bi bi-bar-chart-fill me-2"></i>Beginner | <i class="bi bi-calendar3 me-2"></i>5 Weeks | <i class="bi bi-star-fill me-2"></i>4.7</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="xp-badge"><i class="bi bi-lightning-charge-fill me-1"></i>Earn 150 XP</span>
+              <small class="text-muted">36 students enrolled</small>
+            </div>
+            <a href="CourseVID.html?id=course2" class="btn enroll-button bg-warning d-block mt-3">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="col-lg-4 col-md-6 course-card" data-category="english" data-level="intermediate">
+        <div class="card">
+          <img src="../IMG/english.png" class="card-img-top" alt="English Grammar">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h5 class="card-title">English Grammar</h5>
+            </div>
+            <p class="card-text"><i class="bi bi-bar-chart-fill me-2"></i>Intermediate | <i class="bi bi-calendar3 me-2"></i>3 Weeks | <i class="bi bi-star-fill me-2"></i>4.6</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="xp-badge"><i class="bi bi-lightning-charge-fill me-1"></i>Earn 100 XP</span>
+              <small class="text-muted">42 students enrolled</small>
+            </div>
+            <a href="CourseVID.html?id=course3" class="btn enroll-button bg-warning d-block mt-3">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 4 -->
+      <div class="col-lg-4 col-md-6 course-card" data-category="coding" data-level="advanced">
+        <div class="card">
+          <img src="../IMG/coding ad.png" class="card-img-top" alt="Advanced Coding">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h5 class="card-title">Advanced Coding</h5>
+              <span class="badge bg-primary">New</span>
+            </div>
+            <p class="card-text"><i class="bi bi-bar-chart-fill me-2"></i>Advanced | <i class="bi bi-calendar3 me-2"></i>8 Weeks | <i class="bi bi-star-fill me-2"></i>4.9</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="xp-badge"><i class="bi bi-lightning-charge-fill me-1"></i>Earn 250 XP</span>
+              <small class="text-muted">18 students enrolled</small>
+            </div>
+            <a href="CourseVID.html?id=course4" class="btn enroll-button bg-warning d-block mt-3">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 5 -->
+      <div class="col-lg-4 col-md-6 course-card" data-category="physics" data-level="intermediate">
+        <div class="card">
+          <img src="../IMG/physic.png" class="card-img-top" alt="Physics Essentials">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h5 class="card-title">Physics Essentials</h5>
+            </div>
+            <p class="card-text"><i class="bi bi-bar-chart-fill me-2"></i>Intermediate | <i class="bi bi-calendar3 me-2"></i>6 Weeks | <i class="bi bi-star-fill me-2"></i>4.8</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="xp-badge"><i class="bi bi-lightning-charge-fill me-1"></i>Earn 180 XP</span>
+              <small class="text-muted">29 students enrolled</small>
+            </div>
+            <a href="CourseVID.html?id=course5" class="btn enroll-button bg-warning d-block mt-3">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 6 -->
+      <div class="col-lg-4 col-md-6 course-card" data-category="chemistry" data-level="beginner">
+        <div class="card">
+          <img src="../IMG/chemistry.png" class="card-img-top" alt="Chemistry Basics">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <h5 class="card-title">Chemistry Basics</h5>
+              <span class="badge bg-primary">New</span>
+            </div>
+            <p class="card-text"><i class="bi bi-bar-chart-fill me-2"></i>Beginner | <i class="bi bi-calendar3 me-2"></i>5 Weeks | <i class="bi bi-star-fill me-2"></i>4.7</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="xp-badge"><i class="bi bi-lightning-charge-fill me-1"></i>Earn 160 XP</span>
+              <small class="text-muted">32 students enrolled</small>
+            </div>
+            <a href="CourseVID.html?id=course6" class="btn enroll-button bg-warning d-block mt-3">Enroll Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Results Message -->
+    <div id="noResults" class="text-center my-5 d-none">
+      <i class="bi bi-search" style="font-size: 3rem; color: #9b87f5;"></i>
+      <h3 class="mt-3">No courses found</h3>
+      <p class="text-muted">Try adjusting your search or filter criteria</p>
+      <button id="clearSearch" class="btn reset-button mt-2">Clear Search</button>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Course pagination" class="mt-5">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="Home.html">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="Home.html">1</a></li>
+        <li class="page-item active"><a class="page-link" href="Courses.html">2</a></li>
+        <li class="page-item"><a class="page-link" href="Courses.html">Next</a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- <script>
+    // Course navigation function
+    function goToPlayer(courseId) {
+      window.location.href = `CourseVID.html?id=${courseId}`;
+    }
+    
+    // Search and filter functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('searchInput');
+      const categoryFilter = document.getElementById('categoryFilter');
+      const levelFilter = document.getElementById('levelFilter');
+      const resetFilters = document.getElementById('resetFilters');
+      const courseCards = document.querySelectorAll('.course-card');
+      const noResults = document.getElementById('noResults');
+      const clearSearch = document.getElementById('clearSearch');
+      const searchSpinner = document.getElementById('searchSpinner');
+      
+      function filterCourses() {
+        // Show spinner briefly
+        searchSpinner.classList.remove('d-none');
+        
+        setTimeout(() => {
+          const searchTerm = searchInput.value.toLowerCase();
+          const category = categoryFilter.value;
+          const level = levelFilter.value;
+          
+          let visibleCount = 0;
+          
+          courseCards.forEach(card => {
+            const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
+            const cardCategory = card.dataset.category;
+            const cardLevel = card.dataset.level;
+            
+            const matchesSearch = cardTitle.includes(searchTerm);
+            const matchesCategory = category === 'all' || cardCategory === category;
+            const matchesLevel = level === 'all' || cardLevel === level;
+            
+            if (matchesSearch && matchesCategory && matchesLevel) {
+              card.classList.remove('d-none');
+              visibleCount++;
+            } else {
+              card.classList.add('d-none');
+            }
+          });
+          
+          if (visibleCount === 0) {
+            noResults.classList.remove('d-none');
+          } else {
+            noResults.classList.add('d-none');
+          }
+          
+          searchSpinner.classList.add('d-none');
+        }, 500); // Short delay to show the spinner
+      }
+      
+      // Event listeners
+      searchInput.addEventListener('input', filterCourses);
+      categoryFilter.addEventListener('change', filterCourses);
+      levelFilter.addEventListener('change', filterCourses);
+      
+      resetFilters.addEventListener('click', function() {
+        searchInput.value = '';
+        categoryFilter.value = 'all';
+        levelFilter.value = 'all';
+        filterCourses();
+      });
+      
+      clearSearch.addEventListener('click', function() {
+        searchInput.value = '';
+        categoryFilter.value = 'all';
+        levelFilter.value = 'all';
+        filterCourses();
+      });
+    });
+  </script> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="index1.js"></script>
+</body>
+</html>

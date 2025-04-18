@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Player - NPS eLearning</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #edf2ff;
+            --secondary: #3bc9db;
+            --accent: #ff6b6b;
+            --dark: #252a34;
+            --light: #f2f4f8;
+            --success: #38b000;
+            --warning: #ffbe0b;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            min-height: 100vh;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .navbar-brand:hover {
+            transform: translateX(-3px);
+        }
+
+        /* XP counter */
+        #xpCount {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+            }
+        }
+
+        /* Video container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 12px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+
+        /* Course title section */
+        #courseTitle {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        #courseTitle::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            bottom: -8px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .badge {
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-muted {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #6c757d !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Card styling */
+        .card {
+            border: none;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Quiz card */
+        .quiz-card {
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-left: 5px solid var(--primary);
+        }
+
+        .quiz-card[style*="opacity: 1"] .bg-primary {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Progress bar */
+        .progress {
+            height: 10px;
+            background-color: var(--primary-light);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0.7rem 0;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transition: width 0.5s ease;
+        }
+
+        /* Headings */
+        h5 {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h5 i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Toast */
+        .toast {
+            background: linear-gradient(to right, var(--success), #57cc99);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+        }
+
+        /* Modal */
+        .modal-content {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.25rem 1.5rem;
+            border-bottom: none;
+        }
+
+        .modal-title {
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-footer {
+            border-top: none;
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        /* Form elements */
+        .form-check-input:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #495057;
+            border: none;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+            
+            #courseTitle {
+                font-size: 1.5rem;
+            }
+            
+            .badge, .text-muted {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Animation for cards appearing */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .video-container {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Course description animation */
+        #courseDescription {
+            position: relative;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+
+        #courseDescription::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), transparent);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar bg-white">
+        <div class="container">
+            <a class="navbar-brand text-primary" href="courses.html">
+                <i class="bi bi-arrow-left"></i> Back to Courses
+            </a>
+            <div>XP: <strong id="xpCount">0</strong></div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Video Section -->
+            <div class="col-lg-8">
+                <div class="video-container">
+                    <iframe id="youtubeVideo" src="" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+                <!-- Course Title & Description -->
+                <div class="mt-4">
+                    <h2 id="courseTitle">Loading title...</h2>
+                    <div class="d-flex flex-wrap gap-3 my-3">
+                        <span class="badge bg-primary" id="courseLevel">Beginner Level</span>
+                        <span class="text-muted"><i class="bi bi-clock"></i> <span id="courseDuration">...</span></span>
+                        <span class="text-muted"><i class="bi bi-person-circle"></i> Faculty: <span
+                                id="courseFaculty">...</span></span>
+                    </div>
+                    <p class="text-muted" id="courseDescription">...</p>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <!-- Real-time Progress -->
+                        <div class="mb-4">
+                            <h5><i class="bi bi-graph-up"></i> Watching Video</h5>
+                            <div class="progress">
+                                <div class="progress-bar" id="videoProgressBar" role="progressbar"
+                                    style="width: 0%"></div>
+                            </div>
+                            <small class="text-muted d-block mt-2"><span id="progressText">0%</span> Completed</small>
+                        </div>
+
+                        <!-- Course Info Again -->
+                        <div class="mb-4">
+                            <h5><i class="bi bi-info-circle"></i> Course Info</h5>
+                            <p class="mb-1"><strong>Title:</strong> <span id="courseTitle2"></span></p>
+                            <p class="mb-1"><strong>Duration:</strong> <span id="courseDuration2"></span></p>
+                            <p class="mb-1"><strong>Faculty:</strong> <span id="courseFaculty2"></span></p>
+                        </div>
+
+                        <!-- Quiz Cards -->
+                        <h5><i class="bi bi-trophy"></i> Course Quizzes</h5>
+                        <div id="quizContainer"></div>
+
+                        <!-- Toast Notification -->
+                        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                            <div id="quizToast" class="toast align-items-center text-white border-0"
+                                role="alert" aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex">
+                                    <div class="toast-body">
+                                        <i class="bi bi-unlock me-2"></i> Quiz Unlocked! You can now attempt a quiz.
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                                        data-bs-dismiss="toast"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quizModalLabel">Quiz</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="quizQuestions">
+                    <!-- Questions will be dynamically added here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="submitQuiz">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let courses = {};
+        let player;
+        let quizStatus = [false, false, false, false];
+        const quizThresholds = [25, 50, 75, 100];
+        const XP_PER_QUIZ = 50; // Har quiz ke liye 50 XP
+
+        // XP ko localStorage se load karo ya 0 set karo
+        let totalXP = parseInt(localStorage.getItem('totalXP')) || 0;
+        document.getElementById("xpCount").textContent = totalXP;
+
+        async function fetchCourses() {
+            try {
+                const response = await fetch('courses.json');
+                if (!response.ok) throw new Error('JSON file load nahi hui');
+                courses = await response.json();
+                loadCourse();
+            } catch (error) {
+                console.error("Error fetching courses:", error);
+                alert("Courses load nahi hue, check console!");
+            }
+        }
+
+        function initializePlayer(videoId) {
+            player = new YT.Player("youtubeVideo", {
+                videoId: videoId,
+                playerVars: {
+                    'enablejsapi': 1,
+                    'playsinline': 1,
+                    'origin': window.location.origin
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange,
+                    'onError': onPlayerError
+                }
+            });
+        }
+
+        function loadCourse() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = urlParams.get("id");
+
+            if (!courseId || !courses[courseId]) {
+                alert("Invalid course selection!");
+                window.location.href = "courses.html";
+                return;
+            }
+
+            const course = courses[courseId];
+
+            document.getElementById("courseTitle").textContent = course.title;
+            document.getElementById("courseTitle2").textContent = course.title;
+            document.getElementById("courseDuration").textContent = course.duration;
+            document.getElementById("courseDuration2").textContent = course.duration;
+            document.getElementById("courseFaculty").textContent = course.faculty;
+            document.getElementById("courseFaculty2").textContent = course.faculty;
+            document.getElementById("courseDescription").textContent = course.description;
+            document.getElementById("courseLevel").textContent = course.level;
+
+            const youtubeVideo = document.getElementById("youtubeVideo");
+            youtubeVideo.src = `https://www.youtube.com/embed/${course.videoId}?enablejsapi=1&playsinline=1`;
+
+            const quizContainer = document.getElementById("quizContainer");
+            quizContainer.innerHTML = quizThresholds.map((threshold, index) => `
+                <div class="card quiz-card mb-3" id="quiz${index}" style="pointer-events: none; opacity: 0.6;" data-threshold="${threshold}">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="bg-primary text-white rounded p-2 me-3">
+                            <i class="bi bi-trophy" style="font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-0">Quiz - ${threshold}%</h6>
+                            <small class="text-muted">Unlocks at ${threshold}% completion</small>
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+
+            if (typeof YT !== 'undefined' && YT.Player) {
+                initializePlayer(course.videoId);
+            }
+
+            // Quiz card pe click event
+            document.querySelectorAll('.quiz-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    if (this.style.pointerEvents === 'auto') {
+                        const threshold = this.getAttribute('data-threshold');
+                        showQuizModal(courseId, threshold);
+                    }
+                });
+            });
+        }
+
+        function onPlayerReady(event) {
+            setInterval(updateProgress, 1000);
+        }
+
+        function onPlayerStateChange(event) {}
+
+        function onPlayerError(event) {
+            console.log("Player Error: ", event.data);
+        }
+
+        function updateProgress() {
+            if (player && player.getDuration && player.getCurrentTime) {
+                const current = player.getCurrentTime();
+                const duration = player.getDuration();
+                const progress = (current / duration) * 100;
+
+                document.getElementById("videoProgressBar").style.width = `${progress}%`;
+                document.getElementById("progressText").textContent = `${Math.floor(progress)}%`;
+
+                quizThresholds.forEach((threshold, index) => {
+                    if (progress >= threshold && !quizStatus[index]) {
+                        const quizCard = document.getElementById(`quiz${index}`);
+                        quizCard.style.pointerEvents = "auto";
+                        quizCard.style.opacity = "1";
+                        quizStatus[index] = true;
+                        new bootstrap.Toast(document.getElementById("quizToast")).show();
+                    }
+                });
+            }
+        }
+
+        function showQuizModal(courseId, threshold) {
+            const quizData = courses[courseId].quizzes[threshold];
+            const quizQuestionsDiv = document.getElementById("quizQuestions");
+            quizQuestionsDiv.innerHTML = '';
+
+            quizData.forEach((q, index) => {
+                const questionHtml = `
+                    <div class="mb-3">
+                        <p><strong>${index + 1}. ${q.question}</strong></p>
+                        ${q.options.map((option, i) => `
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q${index}" id="q${index}o${i}" value="${option}">
+                                <label class="form-check-label" for="q${index}o${i}">${option}</label>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                quizQuestionsDiv.innerHTML += questionHtml;
+            });
+
+            document.getElementById("quizModalLabel").textContent = `Quiz - ${threshold}% Completion`;
+            const quizModal = new bootstrap.Modal(document.getElementById("quizModal"));
+            quizModal.show();
+
+            // Submit button ka logic with XP update
+            document.getElementById("submitQuiz").onclick = function() {
+                let score = 0;
+                quizData.forEach((q, index) => {
+                    const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+                    if (selectedOption && selectedOption.value === q.answer) {
+                        score++;
+                    }
+                });
+
+                // Agar quiz complete hua (e.g., 3/5 ya full marks), XP add karo
+                if (score >= 3) { // Minimum 3 sahi hone pe quiz complete maana
+                    const completedQuizzes = JSON.parse(localStorage.getItem(`completedQuizzes_${courseId}`)) || [];
+                    if (!completedQuizzes.includes(threshold)) {
+                        totalXP += XP_PER_QUIZ;
+                        localStorage.setItem('totalXP', totalXP);
+                        document.getElementById("xpCount").textContent = totalXP;
+                        completedQuizzes.push(threshold);
+                        localStorage.setItem(`completedQuizzes_${courseId}`, JSON.stringify(completedQuizzes));
+                        alert(`Quiz completed! You earned ${XP_PER_QUIZ} XP. Total XP: ${totalXP}`);
+                    } else {
+                        alert(`Quiz completed! Score: ${score}/${quizData.length}. No new XP (already earned).`);
+                    }
+                } else {
+                    alert(`Quiz completed! Score: ${score}/${quizData.length}. Need at least 3 correct for XP.`);
+                }
+                quizModal.hide();
+            };
+        }
+
+        window.onYouTubeIframeAPIReady = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = urlParams.get("id");
+            const course = courses[courseId];
+            if (course) {
+                initializePlayer(course.videoId);
+            }
+        };
+
+        window.onload = function() {
+            fetchCourses();
+        };
+    </script>
+    <script src="index1.js"></script>
+</body>
+
+</html>

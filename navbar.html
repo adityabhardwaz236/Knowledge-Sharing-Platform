@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <title>Document</title>
+</head>
+<style>
+ /* style.css */
+.navbar-nav .nav-link {
+    color: #f8f8f8;
+    padding: 8px 10px; /* Size chhota kiya (pehle 10px 15px tha) */
+    transition: all 0.3s ease;
+    position: relative; /* Line ke liye relative position */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff;
+    background-color: #23275e;
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-link.active {
+    color: #fff;
+    background-color: transparent; /* Background hata diya */
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 3px; /* Line ki thickness */
+    background-color: #fefefe; /* Line ka color */
+}
+
+.dropdown-item.active {
+    background-color: transparent; /* Dropdown items ka background bhi hata diya */
+    color: #0509fa;
+    font-weight: bold;
+}
+
+.dropdown-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    background-color: #ffffff;
+}
+.button-73:hover {
+    background-color: #2949ff;
+    box-shadow: #1482ff 0 -6px 8px inset;
+    transform: scale(1.1);
+  }
+  
+  .button-73:active {
+    transform: scale(1.025);
+  }
+  
+  @media (min-width: 750px) {
+    .button-73 {
+      font-size: 0.9rem;
+      padding: .70rem 1rem;
+    }
+  }
+
+</style>
+<body>
+    <!-- navbar.html -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="Home.html">
+                <img src="/IMG/logo1.jpg" alt="eLearning Logo" height="40"> NPS eLearning
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- <form class="d-flex">
+                        <input id="searchInput" class="form-control me-2" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success bg-primary" type="submit">Search</button>
+                    </form> -->
+                    <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Courses.html">Courses</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="Dashboard.html">Dashboard</a></li> -->
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="challengesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Challenges</a>
+                        <ul class="dropdown-menu" aria-labelledby="challengesDropdown">
+                            <li><a class="dropdown-item" href="Math_challenges.html">Math Challenges</a></li>
+                            <li><a class="dropdown-item" href="English_Challenges.html">English Challenges</a></li>
+                            <li><a class="dropdown-item" href="Science_challenges.html">Science Challenges</a></li>
+                        </ul>
+                    </li> -->
+                    <!-- <li class="nav-item"><a class="nav-link" href="Rank.html">Rank</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+                    <a class="nav-link btn btn-light text-light px-3" href="login.html"><strong>Register/Login</strong></a>
+                    <!-- <a href="Login.html"<button class="button-73" role="button"><strong>Login/Register</strong></button></a> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- <script src="index1.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

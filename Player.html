@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Player - NPS eLearning</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .chapter-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row g-4">
+            <!-- Video Player Section -->
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-body p-0">
+                        <div class="video-container">
+                            <iframe id="courseVideo" src="" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Navigation -->
+                <div class="mt-3 d-flex justify-content-between">
+                    <a href="Courses.html" class="btn btn-outline-primary">
+                        <i class="bi bi-arrow-left"></i> Back to Courses
+                    </a>
+                    <button class="btn btn-primary" id="nextLessonBtn">
+                        Next Lesson <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Course Details Sidebar -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <!-- Course Header -->
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h3 id="courseTitle" class="mb-0"></h3>
+                                <span class="text-muted" id="courseDuration"></span>
+                            </div>
+                            <span class="badge bg-primary" id="courseLevel"></span>
+                        </div>
+
+                        <!-- Progress Section -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Your Progress:</span>
+                                <span id="progressPercentage">0%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div id="progressBar" class="progress-bar bg-success" 
+                                     role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Course Chapters -->
+                        <div class="mb-4">
+                            <h5><i class="bi bi-list-task"></i> Course Content</h5>
+                            <div class="list-group chapter-list" id="chapterList">
+                                <!-- Chapters will be loaded dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Resources -->
+                        <div class="mb-4">
+                            <h5><i class="bi bi-file-earmark"></i> Resources</h5>
+                            <div class="list-group" id="courseResources">
+                                <!-- Resources will be loaded dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- XP System -->
+                        <div class="alert alert-success d-flex align-items-center">
+                            <i class="bi bi-trophy me-2"></i>
+                            <div>
+                                Earned XP: <strong id="earnedXP">0</strong>
+                                <span id="completionBadge" class="badge bg-warning ms-2 d-none">Course Completed!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Course Data (Should match your courses from previous page)
+        const courses = {
+            1: {
+                title: "Math for Beginners",
+                videoId: "qocdD5Kf3hM", // YouTube video ID
+                duration: "4 Weeks",
+                level: "Beginner",
+                xp: 200,
+                chapters: [
+                    { title: "Introduction to Algebra", duration: "15:00" },
+                    { title: "Basic Equations", duration: "20:30" },
+                    { title: "Fractions", duration: "18:45" }
+                ],
+                resources: [
+                    { name: "Course Notes.pdf", type: "pdf" },
+                    { name: "Practice Problems.zip", type: "archive" }
+                ]
+            }
+        };
+
+        // Get Course ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const courseId = urlParams.get('id');
+
+        // Load Course Data
+        function loadCourse() {
+            const course = courses[courseId];
+            if (!course) window.location.href = 'Courses.html';
+
+            // Set Video
+            document.getElementById('courseVideo').src = 
+                `https://www.youtube.com/embed/${course.videoId}?rel=0&modestbranding=1`;
+
+            // Set Course Details
+            document.getElementById('courseTitle').textContent = course.title;
+            document.getElementById('courseDuration').textContent = course.duration;
+            document.getElementById('courseLevel').textContent = course.level;
+            document.getElementById('earnedXP').textContent = localStorage.getItem(`course-${courseId}-xp`) || 0;
+
+            // Load Chapters
+            const chapterList = document.getElementById('chapterList');
+            chapterList.innerHTML = course.chapters.map((chap, index) => `
+                <a href="#" class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}">
+                    <div class="d-flex justify-content-between">
+                        <span>${index + 1}. ${chap.title}</span>
+                        <small>${chap.duration}</small>
+                    </div>
+                </a>
+            `).join('');
+
+            // Load Resources
+            const resourcesList = document.getElementById('courseResources');
+            resourcesList.innerHTML = course.resources.map(res => `
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="bi bi-filetype-${res.type} me-2"></i>
+                    ${res.name}
+                </a>
+            `).join('');
+
+            // Load Progress
+            const savedProgress = localStorage.getItem(`course-${courseId}-progress`) || 0;
+            updateProgress(savedProgress);
+        }
+
+        // Progress Tracking
+        function updateProgress(percentage) {
+            const progressBar = document.getElementById('progressBar');
+            const progressPercentage = document.getElementById('progressPercentage');
+            
+            progressBar.style.width = `${percentage}%`;
+            progressPercentage.textContent = `${percentage}%`;
+
+            if(percentage >= 100) {
+                document.getElementById('completionBadge').classList.remove('d-none');
+            }
+            
+            localStorage.setItem(`course-${courseId}-progress`, percentage);
+        }
+
+        // Simulate Progress Update (Replace with actual video duration tracking)
+        document.getElementById('nextLessonBtn').addEventListener('click', () => {
+            const currentProgress = parseFloat(localStorage.getItem(`course-${courseId}-progress`)) || 0;
+            const newProgress = Math.min(currentProgress + 33.33, 100);
+            updateProgress(newProgress);
+            
+            // Award XP
+            const currentXP = parseInt(localStorage.getItem(`course-${courseId}-xp`)) || 0;
+            localStorage.setItem(`course-${courseId}-xp`, currentXP + 50);
+            document.getElementById('earnedXP').textContent = currentXP + 50;
+        });
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', loadCourse);
+    </script>
+</body>
+</html>

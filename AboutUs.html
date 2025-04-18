@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - eLearning Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Custom utility classes */
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .animate-float {
+            animation: floatAnimation 3s ease-in-out infinite;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .profile-img-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+        }
+
+        .profile-photo-section {
+            background: linear-gradient(135deg, #4e73df, #9c27b0);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .page-bg {
+            background-image: linear-gradient(to bottom, #f0f8ff, #e6f4ff);
+            min-height: 100vh;
+        }
+
+        .info-label {
+            width: 130px;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            background-color: #e7f1ff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #4e73df;
+            border-radius: 2px;
+        }
+
+        .contact-btn {
+            background-image: linear-gradient(to right, #4e73df, #5a85f0);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(78, 115, 223, 0.3);
+        }
+    </style>
+</head>
+
+<body class="page-bg mt-5">
+
+    <div id="navbar-placeholder"></div>
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="text-center mb-5 animate-fade-in">
+            <h2 class="fw-bold fs-1 text-dark section-title">About Me</h2>
+            <p class="text-secondary mx-auto" style="max-width: 600px;">University Student dedicated to creating
+                engaging learning experiences</p>
+        </div>
+
+        <!-- Profile Card -->
+        <div class="mx-auto" style="max-width: 900px;">
+            <div class="bg-white rounded-4 shadow overflow-hidden" style="animation-delay: 0.2s;"
+                class="animate-fade-in">
+                <div class="row g-0">
+                    <!-- Left side - Photo -->
+                    <div class="col-md-4 profile-photo-section">
+                        <div class="profile-img-container animate-float">
+                            <img src="/IMG/anoop.png" alt="Anoop Singh" class="profile-img">
+                            <div class="profile-img-overlay"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right side - Information -->
+                    <div class="col-md-8 p-4">
+                        <div class="text-uppercase fs-6 fw-semibold text-primary">Profile Information</div>
+                        <h3 class="mt-2 fs-2 fw-bold text-dark">Anoop Singh</h3>
+
+                        <div class="mt-4">
+                            <div class="d-flex border-bottom pb-3 mb-3 align-items-center">
+                                <div class="info-label">
+                                    <span class="info-icon">🏛️</span>
+                                    University
+                                </div>
+                                <div class="fw-medium text-dark">Lovely Professional University, Punjab</div>
+                            </div>
+
+                            <div class="d-flex border-bottom pb-3 mb-3 align-items-center">
+                                <div class="info-label">
+                                    <span class="info-icon">🔢</span>
+                                    Registration
+                                </div>
+                                <div class="fw-medium text-dark">12302545</div>
+                            </div>
+
+                            <div class="d-flex border-bottom pb-3 mb-3 align-items-center">
+                                <div class="info-label">
+                                    <span class="info-icon">📅</span>
+                                    Year
+                                </div>
+                                <div class="fw-medium text-dark">Second</div>
+                            </div>
+
+                            <div class="d-flex align-items-center">
+                                <div class="info-label">
+                                    <span class="info-icon">🎓</span>
+                                    Department
+                                </div>
+                                <div class="fw-medium text-dark">School of Computer Application</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <button class="btn btn-primary contact-btn">
+                                Contact Me
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Info Card -->
+            <div class="mt-4 bg-white rounded-4 shadow p-4 animate-fade-in" style="animation-delay: 0.5s;">
+                <h3 class="fs-4 fw-bold text-dark mb-3">Educational Journey</h3>
+                <p class="text-secondary mb-4">
+                    As a passionate student in the field of Computer Applications, I am dedicated to mastering the
+                    latest technologies and developing innovative solutions. My academic journey at Lovely Professional
+                    University has equipped me with strong foundations in programming, system design, and
+                    problem-solving.
+                </p>
+                <div class="border-top border-light pt-4 mt-4">
+                    <h4 class="fw-medium text-dark mb-3">Skills & Expertise</h4>
+                    <div>
+                        <span class="skill-badge bg-primary bg-opacity-10 text-primary">Web Development</span>
+                        <span class="skill-badge bg-purple bg-opacity-10 text-purple"
+                            style="background-color: rgba(156,39,176,0.1); color: #9c27b0;">C, C++</span>
+                        <span class="skill-badge bg-success bg-opacity-10 text-success">Database Management</span>
+                        <span class="skill-badge bg-warning bg-opacity-10 text-warning">SQL</span>
+                        <span class="skill-badge bg-danger bg-opacity-10 text-danger">Adabtbility</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom script for animations -->
+    <script>
+        // Apply animation delay to elements with animate-fade-in class
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll('.animate-fade-in');
+            animatedElements.forEach((element, index) => {
+                if (!element.style.animationDelay) {
+                    element.style.animationDelay = (0.2 * index) + 's';
+                }
+                element.style.animationFillMode = 'forwards';
+            });
+        });
+    </script>
+    <script src="index1.js"></script>
+</body>
+
+</html>
